@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin=" anonymous "></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+    crossorigin="anonymous "></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+    crossorigin="anonymous "></script>
   <title>Document</title>
 </head>
 
@@ -30,7 +37,7 @@
             </div>
             <div class="form-group">
               <label for="picture">Link to Photo (required)</label>
-              <input type="picture" class="form-control" id="picutre" placeholder="Enter Photo Link">
+              <input type="picture" class="form-control" id="picture" placeholder="Enter Photo Link">
             </div>
           </form>
         </div>
@@ -38,21 +45,56 @@
           <div class="survey-questions"></div>
         </div>
         <div class="col-sm-12 d-flex justify-content-center">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary submit">Submit</button>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-center">
+          <div class="survey-links mt-3">
+            <a class="link" href="/api/friends">API Friends List |</a>
+            <a class="link" href="https://github.com/oserenchenko/FriendFinder " target="_blank ">Git Hub Repo</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  <script src="surveyQ.js"></script>
+  <script src="surveyQ.js "></script>
+
+  <script type="text/javascript">
+    $(".submit").on("click", function (event) {
+      event.preventDefault();
+
+      var scores = [];
+      $(".survey-options").each(function () {
+        if ($(this).val() !== "Select an Option") {
+          var surveyValue = parseInt($(this).val());
+          scores.push(surveyValue);
+        }
+      });
+
+      var newFriend = {
+        name: $("#name").val().trim(),
+        photoLink: $("#picture").val().trim(),
+        scores: scores,
+      };
+
+      console.log(newFriend);
+
+
+      $.post("/api/friends", newFriend, function (data) {
+        if (data) {
+          alert("Added new friend!");
+        } else {
+          alert("Sorry, could not add");
+        }
+
+        // Clear the form when submitting
+      //   $("#name").val("");
+      //   $("#picture").val("");
+      //   $(".survey-options").val("");
+      });
+
+    });
+  </script>
 </body>
 
 </html>

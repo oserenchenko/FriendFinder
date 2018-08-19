@@ -24,10 +24,11 @@
   background-color: rgba(245, 211, 148, 0.8);
   margin-top: 150px;
   border: 2px solid #7e3143;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .survey-background {
-  margin-top: 0px;
   margin-top: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -82,9 +83,20 @@ form {
 #inlineFormCustomSelect {
   font-size: 15px;
   width: 180px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-top: -10px;
   margin-left: -10px;
   background-color: white;
+  color: black;
+}
+
+.links {
+  color: black;
+  text-align: left;
+  margin-left: 200px;
+  margin-top: -20px;
+}
+
+.link {
   color: black;
 }
