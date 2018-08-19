@@ -122,36 +122,3 @@ var friendsArr = [{
 },]
 
 module.exports = friendsArr;
-
-
-// var surveyQ = [{
-//   id: 1,
-//   q: "You look for opportunities for adventure in your life."
-// }, {
-//   id: 2,
-//   q: "You would rather have a cozy night in on a Friday night than a wild night out."
-// }, {
-//   id: 3,
-//   q: "You enjoy meeting new people."
-// }, {
-//   id: 4,
-//   q: "You would find it very difficult to spend 24hrs without access to social media."
-// }, {
-//   id: 5,
-//   q: "You like to spend a lot of time outdoors"
-// }, {
-//   id: 6,
-//   q: "You have traveled to many different places and plan to visit many more."
-// }, {
-//   id: 7,
-//   q: "Your family is very important to you."
-// }, {
-//   id: 8,
-//   q: "You spend a lot of time daydreaming and fantasizing."
-// }, {
-//   id: 9,
-//   q: "You are very opinionated and outspoken."
-// }, {
-//   id: 10,
-//   q: "You learn best through experience and hands on activities."
-// }]

@@ -1,0 +1,90 @@
+.background-img {
+  margin-top: 0px;
+  padding-top: 0px;
+  height: 1000px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-image: url("../images/friendship2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  display: block;
+  overflow: auto;
+}
+
+.home {
+  background-color: rgba(245, 211, 148, 0.8);
+  margin-top: 150px;
+  border: 2px solid #7e3143;
+}
+
+.survey-background {
+  margin-top: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 1000px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-image: url("../images/friendship2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  display: block;
+  overflow: auto;
+}
+
+.survey {
+  background-color: rgb(173, 170, 170);
+  border: 2px solid #7e3143;
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+  width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 50px;
+  color: #7e3143;
+  ;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+.form-group {
+  width: 670px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.newQ {
+  font-size: 20px;
+}
+
+#inlineFormCustomSelect {
+  font-size: 15px;
+  width: 180px;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background-color: white;
+  color: black;
+}
