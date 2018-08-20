@@ -100,3 +100,14 @@ form {
 .link {
   color: black;
 }
+
+#friendMatchName {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#friendMatchPic {
+  width: 200px;
+  margin: 0 auto;
+  margin-left: 170px;
+}

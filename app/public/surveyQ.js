@@ -7,3 +7,4 @@ for (var i = 0; i < surveyQ.length; i++) {
   var newDropDown = '<div class="col-auto my-1"> <select class="custom-select survey-options mr-sm-2 ans' + count + '" id="inlineFormCustomSelect"> <option selected>Select an Option</option> <option value="1">1 (Strongly Disagree)</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5 (Strongly Agree)</option> </select> </div>'
   $(".survey-questions").append(qNum, newQ, newDropDown);
 }
+

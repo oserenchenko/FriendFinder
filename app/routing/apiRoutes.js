@@ -1,9 +1,21 @@
 //path dependency
 var path = require("path");
+var jsdom = require('jsdom');
+const {
+  JSDOM
+} = jsdom;
+const {
+  window
+} = new JSDOM();
+const {
+  document
+} = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
 
 //load friend data
 var friendsArrData = require("../data/friends");
-console.log(friendsArrData);
 
 function lowestValInArr(array) {
   var index = 0;
@@ -17,26 +29,6 @@ function lowestValInArr(array) {
   return index;
 }
 
-function compatible(object) {
-  var totalDiffArr = [];
-  for (var i = 0; i < friendsArrData.length; i++) {
-    var totalDifference = 0;
-    for (var j = 0; j < object.scores.length; j++) {
-      var diff = object.scores[j] - friendsArrData[i].scores[j];
-      if (diff < 0) {
-        diff = diff * -1;
-      }
-      totalDifference += diff;
-    }
-    console.log(totalDifference);
-    totalDiffArr.push(totalDifference);
-  }
-  index = lowestValInArr(totalDiffArr);
-  var friendMatch = friendsArrData[index];
-  console.log(friendMatch);
-}
-
-
 
 module.exports = function (app) {
   //GET route to api/friends
@@ -47,10 +39,30 @@ module.exports = function (app) {
   //POST route to api/friends
   app.post("/api/friends", function (req, res) {
     if (req.body.scores.length === 10) {
-      compatible(req.body);
+      var totalDiffArr = [];
+      var friendMatchName = '';
+		  var friendMatchPic = '';
+      for (var i = 0; i < friendsArrData.length; i++) {
+        var totalDifference = 0;
+        for (var j = 0; j < req.body.scores.length; j++) {
+          var diff = req.body.scores[j] - friendsArrData[i].scores[j];
+          if (diff < 0) {
+            diff = diff * -1;
+          }
+          totalDifference += diff;
+        }
+        console.log(totalDifference);
+        totalDiffArr.push(totalDifference);
+      }
+      index = lowestValInArr(totalDiffArr);
+      friendMatchName = friendsArrData[index].name;
+      friendMatchPic = friendsArrData[index].photo;
       friendsArrData.push(req.body);
-      res.json(true);
     }
-
+    res.json({
+      status: 'OK',
+      friendMatchName: friendMatchName,
+      friendMatchPic: friendMatchPic
+    });
   })
 }

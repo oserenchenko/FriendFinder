@@ -9,17 +9,32 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin=" anonymous "></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
-    crossorigin="anonymous "></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
-    crossorigin="anonymous "></script>
   <title>Document</title>
 </head>
 
 <body>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your Best Friend Match!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+          <h3 id="friendMatchName"></h3>
+        </div>
+        <div>
+          <img src="" alt="friendMatchPicture" id="friendMatchPic">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="survey-background">
     <div class="jumbotron survey">
       <div class="row">
@@ -57,7 +72,11 @@
     </div>
   </div>
 
-  <script src="surveyQ.js "></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+    crossorigin="anonymous "></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+    crossorigin="anonymous "></script>
 
   <script type="text/javascript">
     $(".submit").on("click", function (event) {
@@ -73,7 +92,7 @@
 
       var newFriend = {
         name: $("#name").val().trim(),
-        photoLink: $("#picture").val().trim(),
+        photo: $("#picture").val().trim(),
         scores: scores,
       };
 
@@ -82,19 +101,19 @@
 
       $.post("/api/friends", newFriend, function (data) {
         if (data) {
-          alert("Added new friend!");
+          $('#friendMatchName').html(data.friendMatchName);
+          $("#friendMatchPic").attr("src", data.friendMatchPic);
+          $('#myModal').modal('show');
         } else {
-          alert("Sorry, could not add");
+          console.log("Sorry, could not add");
         }
-
-        // Clear the form when submitting
-      //   $("#name").val("");
-      //   $("#picture").val("");
-      //   $(".survey-options").val("");
       });
 
     });
   </script>
+
+  <script src="surveyQ.js"></script>
+
 </body>
 
 </html>
