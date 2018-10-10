@@ -18,9 +18,9 @@ ______________
 ## Getting Started
 to install locally run this command in your terminal
 ```
-git clone https://github.com/oserenchenko/Latest-News.git
+git clone https://github.com/oserenchenko/FriendFinder.git
 ```
-once inside the Latest_News folder, run
+once inside the FriendFinder folder, run
 ```
 npm install
 ```
@@ -28,25 +28,19 @@ then, start the server
 ```
 node server.js
 ```
-finally, open 
+finally, in your preferred web browser, open 
 ```
-localhost:3000
+localhost:8080
 ```
-in your preferred web browser
 
 ## Built With
-
 * HTML - website structure
 * [CSS](https://css-tricks.com/) - styling
 * [Bootstrap](https://getbootstrap.com/) - styling framework
-* [Handlebars](https://handlebarsjs.com/) - JS templates
 * [Javascript](https://www.javascript.com/) - website logic
 * [jQuery](https://jquery.com/) - manipulating the DOM
-* [MongoDB/Mongoose](https://mongoosejs.com/) - database and object modeling
 * [Node.js](https://nodejs.org/en/) - JS runtime
 * [Express](https://expressjs.com/) - web framework for Node.js
-* [Cheerio](https://github.com/cheeriojs/cheerio) - npm dependency for scraping websites
-* [NPR News](https://www.npr.org/sections/news/) - news source
 
 ______________
 ______________
