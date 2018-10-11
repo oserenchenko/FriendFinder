@@ -9,7 +9,7 @@ ______________
 ## Visit the deployed version of Friend Finder
 [Friend Finder](https://hidden-brushlands-29323.herokuapp.com//)
 
-![homepage]()
+![homepage](friendFinder.png)
 
 ______________
 ______________
